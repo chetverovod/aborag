@@ -41,4 +41,29 @@ python3 aborag-gen-ref.py
 ```shell
 python3 aborag-cli.py
 ```
+If you get error message like this:
+```
+Embedding dimension 768 does not match collection dimensionality 300
+```
+it looks like you had forget regenerate reference embeddings after embedding model change. 
+
+## Models Selection
+Yoy can change embeddings model or main model by editing configuration file **aborag_cfg**:
+
+```python
+#embedmodel: 'nomic-embed-text'
+embedmodel: 'navec'
+mainmodel: 'gemma:2b'
+#mainmodel: 'llama3.1'
+collection_name: 'buildragwithpython'
+reference_docs_path: 'knowlage' 
+use_chat: False      # Selects chat mode of model, if False generator mode is used.
+print_context: False  # Print context which wil be added to prompt. 
+```
+
+If reference docs in Russian use embedding model **navec** (Natasha vector).
+
+If reference docs in English use embedding model **nomic-embed-text**.
+
+if your PC has GPU it would be better to select llama3.1 as the main model.
 

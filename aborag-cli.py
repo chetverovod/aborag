@@ -9,7 +9,6 @@ cfg = config.Config('aborag.cfg')
 EMBED_MODEL = cfg["embedmodel"]
 MAIN_MODEL = cfg["mainmodel"]
 USE_CHAT = cfg['use_chat']
-USE_NAVEC = cfg['use_navec']
 COLLECTION_NAME = cfg['collection_name']
 PRINT_CONTEXT = cfg['print_context']
 
@@ -34,11 +33,13 @@ def main():
 
     collection = get_collection()
     run_flag = True
+    print(f'Embedding model: {EMBED_MODEL}')
+    print(f'Main model: {MAIN_MODEL}')
 
     print('\nAssistant for bike Suzuki Djebel 200 service is running.\n'
           'Enter your question or type "q" to exit.\n')
 
-    if USE_NAVEC is True:
+    if EMBED_MODEL == 'navec':
         print('Navec embeddings selected.\nType questions in Russian.\n')
 
     answer_tag = ">>> "
@@ -47,7 +48,7 @@ def main():
     while run_flag is True:
         query = input(query_tag)
         if query.capitalize() != 'Q' and query.capitalize() != 'Й':
-            if USE_NAVEC is True:
+            if EMBED_MODEL == 'navec':
                 emb = ec.navec_embeddings(query)
             else:
                 emb = ollama.embeddings(model=EMBED_MODEL, prompt=query)
