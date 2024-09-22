@@ -6,7 +6,7 @@ import config
 
 
 # Load settings from configuration file.
-cfg = config.Config('app.cfg')
+cfg = config.Config('aborag.cfg')
 EMBED_MODEL = cfg["embedmodel"]
 USE_NAVEC = cfg['use_navec']
 COLLECTION_NAME = cfg['collection_name']

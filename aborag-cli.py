@@ -5,7 +5,7 @@ import config
 
 
 # Load settings from configuration file.
-cfg = config.Config('app.cfg')
+cfg = config.Config('aborag.cfg')
 EMBED_MODEL = cfg["embedmodel"]
 MAIN_MODEL = cfg["mainmodel"]
 USE_CHAT = cfg['use_chat']

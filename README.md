@@ -18,7 +18,7 @@ What's changed:
 1. `sudo apt-get install libmagic1`  
 2. `pip install -r requirements.txt`
 3. Make sure you have the models listed in config.ini. so for nomic-embed-text, run `ollama pull nomic-embed-text`. Update the config to show whatever models you want to use.
-4. Run ChromaDB in a separate terminal: `chroma run --host localhost --port 8000 --path ../vectordb-stores/chromadb`
+4. Run ChromaDB in a separate terminal: `chroma run --host localhost --port 8000 --path ./vectordb-stores/chromadb`
 5. Put reference txt docs to *knowledge* folder.
 5. Edit the list of docs in `sourcedocs.txt`
 6. If reference data was updated, update embeddings for reference docs in Chroma DB: `python3 import.py`
