@@ -16,11 +16,29 @@ What's changed:
 
 ## Installation:
 1. `sudo apt-get install libmagic1`  
-2. `pip install -r requirements.txt`
-3. Make sure you have the models listed in config.ini. so for nomic-embed-text, run `ollama pull nomic-embed-text`. Update the config to show whatever models you want to use.
-4. Run ChromaDB in a separate terminal: `chroma run --host localhost --port 8000 --path ./vectordb-stores/chromadb`
-5. Put reference txt docs to *knowledge* folder.
-5. Edit the list of docs in `sourcedocs.txt`
-6. If reference data was updated, update embeddings for reference docs in Chroma DB: `python3 import.py`
-7. Run console chat with Assistant: `python3 simple_cli.py`
+1. `pip install -r requirements.txt`
+1. Download Navec model
+```shell 
+cd emb_models
+wget https://storage.yandexcloud.net/natasha-navec/packs/navec_hudlit_v1_12B_500K_300d_100q.tar
+```
+4. Make sure you have the models listed in config.ini. so for nomic-embed-text, run:
+```shell 
+ollama pull nomic-embed-text
+```
+  Update the config to show whatever models you want to use.
+5. Run ChromaDB in a separate terminal:
+```shell
+chroma run --host localhost --port 8000 --path ./vectordb-stores/chromadb
+```
+6. Put reference txt docs to a folder *knowledge* .
+1. Edit the list of docs in `sourcedocs.txt`
+1. If reference data was updated, update embeddings of reference docs in the Chroma DB:
+```shell
+python3 aborag-gen-ref.py
+```
+9. Run console chat with Assistant:
+```shell
+python3 aborag-cli.py
+```
 
