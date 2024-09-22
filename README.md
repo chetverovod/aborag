@@ -8,9 +8,9 @@ lesson 2024-04-04-build-rag-with-python
 What's changed:
 1. Added Natasha (https://github.com/natasha/navec)  embeddings model for Russian reference data.
 2. Mane model replaced from gemma:2b to llama3.1
-3. Application configuration management reimlemented on config package.
+3. Application configuration management reimplemented on config package.
 4. Remove content download from Web. 
-5. Added directory with reference data (in Russian) about bike Suzuki Djebel 200. 
+5. Added directory with reference data (in Russian and English) about bike Suzuki Djebel 200. 
 
 
 
@@ -31,8 +31,20 @@ ollama pull nomic-embed-text
 ```shell
 chroma run --host localhost --port 8000 --path ./vectordb-stores/chromadb
 ```
-6. Put reference txt docs to a folder *knowledge* .
-1. Edit the list of docs in `sourcedocs.txt`
+6. Put directory of reference txt docs to a folder *knowledge* lak that:
+```
+knowlege/
+├── suzuki_djebel_200_en
+│   ├── djebel_quotes_en.txt
+│   ├── djebel_quotes_um_chap_1_en.txt
+│   └── djebel_quotes_um_chap_2_en.txt
+└── suzuki_djebel_200_ru
+    ├── djebel_quotes_ru.txt
+    ├── djebel_quotes_um_chap_1_ru.txt
+    └── djebel_quotes_um_chap_2_ru.txt
+
+```
+7. Edit the list of docs in `sourcedocs.txt`
 1. If reference data was updated, update embeddings of reference docs in the Chroma DB:
 ```shell
 python3 aborag-gen-ref.py
